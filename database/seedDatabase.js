@@ -1,32 +1,33 @@
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
+const faker = require('faker');
 
-mongoose.connect('mongodb://localhost/gallery');
+mongoose.connect('mongodb://localhost/photos');
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Connection Error: '));
-db.once('open', () => {
-    console.log('Connected to DB')
-});
+const db = mongoose.connection;
 
-var Schema = mongoose.Schema;
+db.on('err', console.error.bind('err'));
+db.once('open', () => {console.log('DB Connected')});
 
-var imgSchema = new Schema({
-    url: String,
+var Schema = new mongoose.Schema({
     listingId: Number,
-    pictureId: Number,
-    caption: String
+    photoId: Number,
+    caption: String,
+    photoUrl: String
 });
 
-var Gallery = mongoose.model('Galleries', imgSchema);
+var Photo = mongoose.model('Photos', Schema);
 
+var data = [];
+for (var i = 0; i < 10; i++) {
+   for( var j = 1; j < 11; j++) {
+       var picture = {
+           listingId: i,
+           photoId: j,
+           caption: faker.lorem.words(),
+           photoUrl: faker.image.animals()
+       }
+       data.push(picture);
+   }
+};
 
-// const filter = {listingId: 0};
-// const update = {caption: 'hi Vita'};
-Gallery.findOneAndUpdate(filter, update, {
-    new: true,
-    upsert: true
-}, (err, doc) => {
-    if (err) {
-        console.log(err);
-    }
-});
+Photo.insertMany(data);
