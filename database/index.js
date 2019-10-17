@@ -1,9 +1,22 @@
 const mongoose = require('mongoose');
-const faker = require('faker');
+const Photo = require('./Model.js');
+
 
 mongoose.connect('mongodb://localhost/photos');
 
 const db = mongoose.connection;
 
 db.on('err', console.error.bind('err'));
-db.once('open', () => {console.log('DB Connected')});
+db.once('open', () => {console.log('DB Connected!!')});
+
+
+
+const getAll = (req, res) => {
+  Photo.find({listingId: 1})
+  .then(data => res.send(data));
+}
+
+
+module.exports = {
+    getAll: getAll
+}
