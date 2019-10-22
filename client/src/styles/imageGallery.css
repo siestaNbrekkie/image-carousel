@@ -1,8 +1,65 @@
-.img {
+.main img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: fill;
     display: block;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.main:hover img {
+    transform: scale(1.05);
+}
+.topLeft img {
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+    display: block;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.topLeft:hover img {
+    transform: scale(1.05);
+}
+
+.topRight img {
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+    display: block;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.topRight:hover img{
+    transform: scale(1.05);
+}
+
+.bottomLeft img {
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+    display: block;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.bottomLeft:hover img {
+    transform: scale(1.05);
+}
+
+.bottomRight img {
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+    display: block;
+    position: relative;
+    transition: transform .5s ease;
+}
+
+.bottomRight:hover img{
+    transform: scale(1.05);
 }
 
 .container {
@@ -12,7 +69,17 @@
     grid-gap: 0;
     width: 100%;
     background-color: #484848;
+    
 }
+
+.container:hover > div {
+    opacity: 0.5;
+}
+
+.container:hover > div:hover {
+    opacity: 1.0;
+}
+
 
 .main {
     grid-column-start: 1;
@@ -22,6 +89,12 @@
     border: solid 1px black;
     overflow: hidden;
 }
+
+.main:hover {
+    opacity: 1;
+}
+
+
 
 .topLeft {
     grid-column-start: 3;
@@ -58,4 +131,8 @@
     grid-row-end: 3;
     border: solid 1px black;
     overflow: hidden;
+}
+
+.container div {
+    transition: opacity .5s ease;
 }
