@@ -14,7 +14,7 @@
   float: right;
 }
 
-.miniGallery .miniGalleryItem img{
+.miniGallery .miniGalleryItem img {
   height: 100%;
   width: auto;
   cursor: pointer;
@@ -41,7 +41,7 @@
   height: 5em;
 }
 
-.miniGallery .miniGalleryItem{
+.miniGallery .miniGalleryItem {
 display: inline-flex;
 justify-content: center;
 align-items: center;

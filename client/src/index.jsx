@@ -5,7 +5,6 @@ import ImageGallery from './component/ImageGallery.jsx';
 import Carousel from './component/Carousel.jsx';
 
 
-
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -53,7 +52,6 @@ class App extends React.Component {
         this.setState({ clickedPhoto: event.target });
         console.log(event.target);
         event.preventDefault();
-
     }
     render() {
         if(this.state.dataLoaded) {
@@ -68,10 +66,10 @@ class App extends React.Component {
                 />
             );
         }
-    else return (
-        <div>Fetching Data</div>
-    )
-}
+        else return (
+            <div>Fetching Data</div>
+        )
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

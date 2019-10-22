@@ -6,16 +6,13 @@ class CarouselThumbnailSlider extends React.Component {
         super(props);
     }
     render() {
-
         let currentMiniGalleryImageCss = {
             border: 'solid 2px #414141',
             opacity: 1
-          };
-      
-          let miniGalleryTranslate = {
+        };
+        let miniGalleryTranslate = {
             transform: `translateX(${10 + -48 * this.props.currentPhoto}px)`
-          };
-      
+        };
         return (
             <div className={styles.sidePanel}>
                 <div className={styles.miniGallery}>
