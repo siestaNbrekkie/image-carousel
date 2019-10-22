@@ -23,13 +23,11 @@
 
 .leftArrowButton, .rightArrowButton {
     display: inline-block;
-      position: relative;
-      vertical-align: top;
-      top: 50%;
-      margin: 0 5%;
-      background-color: Transparent;
-      border: none;
-      z-index: 1;
-      /* height: 100%;
-      width: 100%; */
-  }
+    position: relative;
+    vertical-align: top;
+    top: 50%;
+    margin: 0 5%;
+    background-color: Transparent;
+    border: none;
+    z-index: 1;
+}

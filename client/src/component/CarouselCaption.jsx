@@ -8,10 +8,10 @@ class CarouselCaption extends React.Component {
     render() {
         return (
             <div className={styles.sidePanel}>
-            <div className={styles.caption}>
-                <p>{this.props.currentPhoto+1}/{this.props.imageData.length}</p>
-                <p>{this.props.imageData[this.props.currentPhoto].caption}</p>
-            </div>
+                <div className={styles.caption}>
+                    <p>{this.props.currentPhoto+1}/{this.props.imageData.length}</p>
+                    <p>{this.props.imageData[this.props.currentPhoto].caption}</p>
+                </div>
             </div>
         )
     }

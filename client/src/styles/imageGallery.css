@@ -80,7 +80,6 @@
     opacity: 1.0;
 }
 
-
 .main {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -93,8 +92,6 @@
 .main:hover {
     opacity: 1;
 }
-
-
 
 .topLeft {
     grid-column-start: 3;
