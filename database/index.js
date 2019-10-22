@@ -12,7 +12,7 @@ db.once('open', () => {console.log('DB Connected!!')});
 
 
 const getAll = (req, res) => {
-  Photo.find({listingId: 1})
+  Photo.find({listingId: req.params.id})
   .then(data => res.send(data));
 }
 

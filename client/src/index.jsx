@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import ImageGallery from './component/ImageGallery.jsx';
-import ImageCarousel from './component/ImageCarousel.jsx';
-import Image from './component/Image.jsx';
-import styles from './styles/index.css';
+import Carousel from './component/Carousel.jsx';
 
 
 
@@ -15,7 +13,8 @@ class App extends React.Component {
             index: 0,
             imageData: [],
             image: [],
-            popUp: false
+            popUp: false,
+            dataLoaded: false
         }
     }
     componentDidMount() {
@@ -28,7 +27,9 @@ class App extends React.Component {
         axios.get(`http://localhost:3001/${lastSegment}`)
         .then(data => this.setState({
             imageData: data.data,
-            image: data.data[0]
+            image: data.data[0],
+            dataLoaded: true,
+            clickedPhoto: null
         }) 
     )};
     prevImage() {
@@ -46,50 +47,32 @@ class App extends React.Component {
             image: this.state.imageData[newIndex]
         })
     }
-    handlePopUp() {
-        if (!this.state.popUp) {
-            this.setState({
-                popUp: true
-            })
-        } else {
-            this.setState({
-                popUp: false
-            })
-        }
+    handlePopUp(event) {
+        const { popUp } = this.state;
+        this.setState({ popUp: !popUp });
+        this.setState({ clickedPhoto: event.target });
+        console.log(event.target);
+        event.preventDefault();
+
     }
     render() {
-        if(this.state.imageData[1] && !this.state.popUp) {
-            return(
-                <div>
-                    <h1>React is Working</h1>
-                    <button onClick={this.handlePopUp.bind(this)}>popUp</button>
-                    <br></br>
-                    <ImageGallery imageData={this.state.imageData}/>
-                    {/* <ImageCarousel imageData={this.state.imageData}/> */}
-                </div>
-            )
-        } 
-        else if (this.state.popUp) {
-            return(
-                <div>
-                    <button onClick={this.prevImage.bind(this)}>Prev</button>
-                    <button onClick={this.nextImage.bind(this)}>Next</button>
-                    <button onClick={this.handlePopUp.bind(this)}>Exit</button>
-                    <div className={styles.imageSlider}>
-                        <div className={styles.imageWrapper} style={{
-                            'transform': `translateX(-${this.state.index*(100/this.state.imageData.length)}%)`
-                        }}>
-                            {this.state.imageData.map(image=> <Image imageData={image}/>)}
-                        </div>
-                    </div>
-                </div>
-        )
-    }
+        if(this.state.dataLoaded) {
+            if (!this.state.popUp) {
+                return (<ImageGallery imageData={this.state.imageData} onClick={this.handlePopUp.bind(this)}/>);
+            } 
+            return (
+                <Carousel
+                    currentPhoto={this.state.clickedPhoto}
+                    imageData={this.state.imageData}
+                    handlePopUp={this.handlePopUp.bind(this)}
+                />
+            );
+        }
     else return (
-        <div>Hi</div>
+        <div>Fetching Data</div>
     )
 }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-export default App.fetchData();
+export default App;
