@@ -10,11 +10,8 @@ const db = mongoose.connection;
 db.on('err', console.error.bind('err'));
 db.once('open', () => {console.log('DB Connected')});
 
-console.log(photoData);
-
-
 var data = [];
-for (var i = 0; i < 10; i++) {
+for (var i = 1; i < 101; i++) {
     let index = Math.floor(Math.random() * 2);
    for( var j = 1; j < 11; j++) {
        var picture = {
