@@ -1,6 +1,5 @@
 import React from 'react';
 import CarouselPhoto from './CarouselPhoto.jsx';
-import CarouselCaption from './CarouselCaption.jsx';
 import CarouselThumbnailSlider from './CarouselThumbnailSlider.jsx';
 import styles from '../styles/carousel.css';
 
@@ -41,12 +40,9 @@ class Carousel extends React.Component {
                 currentPhoto={this.state.currentPhoto}
                 imageData={this.props.imageData[this.state.currentPhoto]}
             />
-            <CarouselCaption 
-                currentPhoto={this.state.currentPhoto}
-                imageData={this.props.imageData}
-            />
             <CarouselThumbnailSlider 
                 imageData={this.props.imageData}
+                currentPhoto={this.state.currentPhoto}
             />
             </div>
         )
