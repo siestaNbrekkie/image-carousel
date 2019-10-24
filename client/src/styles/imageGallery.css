@@ -63,11 +63,14 @@
 }
 
 .container {
+    position: fixed;
+    top: 0;
+    left: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 15.5vw);
     grid-gap: 0;
-    width: 100%;
+    width: 110%;
     background-color: #484848;
     
 }

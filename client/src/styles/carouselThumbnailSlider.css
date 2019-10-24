@@ -1,17 +1,17 @@
 .sidePanel {
-  position: absolute;
-  top:-100%;
-  right: -20%;
+  position: fixed;
+  top: 10%;
+  right: 20%;
+  float: right;
+  z-index: 1000;
 }
 
 .miniGallery {
   display: block;
-  position: relative;
+  position: absolute;
   white-space: nowrap;
   overflow: hidden;
-  margin: 70% 13% 0 0;
-  width: 40%;
-  float: right;
+  margin: 45% 13% 0 0;
 }
 
 .miniGallery .miniGalleryItem img {
@@ -22,40 +22,61 @@
 
 .miniGallery:before {
   content: "";
-  position: absolute;
-  left: 0;
-  pointer-events: none;
-  background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255, 1) 100%);
-  width: 6%;
-  height: 5em;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    pointer-events: none;
+    background-image: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255, 1) 100%);
+    width: 6%;
+    height: 5em;
 }
 
 .miniGallery:after {
   content: "";
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  pointer-events: none;
-  background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255, 1) 100%);
-  width: 6%;
-  height: 5em;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    pointer-events: none;
+    background-image: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255, 1) 100%);
+    width: 6%;
+    height: 5em;
 }
 
 .miniGallery .miniGalleryItem {
-display: inline-flex;
-justify-content: center;
-align-items: center;
-height: 70px;
-width: 70px;
-opacity: 0.6;
-overflow: hidden;
-border-radius: 5px;
-margin-left: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  opacity: 0.6;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-left: 5px;
 
--webkit-transition: transform 0.4s;
-transition: transform 0.4s;
+  -webkit-transition: transform 0.4s;
+  transition: transform 0.4s;
 }
 
-.miniGallery .miniGalleryItem:hover {
-opacity: 1;
+.mini-gallery .mini-gallery-item img{
+  height: 100%;
+  width: auto;
+  cursor: pointer;
+}
+
+.mini-gallery .mini-gallery-item:hover {
+  opacity: 1;
+}
+
+.caption {
+  position: fixed;
+  margin-top: 5%;
+  margin-right: 20%;
+}
+
+.caption p{
+  margin: 9% 0;
+}
+
+.caption p:first-child {
+  font-weight: bold;
 }
